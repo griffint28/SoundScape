@@ -16,13 +16,12 @@
     </select>
     <button type="submit">Fetch Top Tracks</button>
 </form>
-
 <!-- Display the top tracks -->
 <ul>
-    {% for track in tracks %}
+    {% for track in top_tracks %}
         <li>
-            <strong>{{ track.name }}</strong> by {{ track.artists.0.name }}
-            <img src="{{ track.album.images.0.url }}" alt="{{ track.name }}" width="100">
+            <strong>{{ track.name }}</strong> by {{ track.artist }}
+            <img src="{{ track.image_url }}" alt="{{ track.name }}" width="100">
         </li>
     {% endfor %}
 </ul>
