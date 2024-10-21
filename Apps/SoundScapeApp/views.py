@@ -1,7 +1,17 @@
-from spotipy.oauth2 import SpotifyClientCredentials
+from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 import spotipy
 from django.conf import settings
 from django.shortcuts import render
+
+# Initialize OAuth globally
+sp_oauth = SpotifyOAuth(
+    client_id=settings.SPOTIFY_CLIENT_ID,
+    client_secret=settings.SPOTIFY_CLIENT_SECRET,
+    redirect_uri=settings.SPOTIFY_REDIRECT_URI,
+    scope='user-top-read'
+)
+
+sp = None  # Global Spotify instance
 
 # Create your views here.
 def index(request):
